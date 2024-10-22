@@ -5,7 +5,7 @@ const RecommendationsTable = ({ recommendations }) => {
     return null;
   }
 
-  const BASE_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5001';
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   console.log('Backend URL:', BASE_URL); // This will help us verify the URL in the console
 
   if (!BASE_URL) {
