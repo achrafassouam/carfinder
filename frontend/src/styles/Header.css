@@ -20,8 +20,9 @@
 }
 
 .logo {
-  font-size: 3.75rem; /* Increased from 2.5rem */
-  margin-right: 22px; /* Increased from 15px */
+  height: 60px;
+  width: auto;
+  margin-right: 1.5rem;
 }
 
 .title-container {

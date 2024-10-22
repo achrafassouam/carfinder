@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Header.css';
+import logo from '../assets/thecarfinder.png';
 
 const Header = () => {
   const navigate = useNavigate(); // React Router hook for navigation
@@ -9,7 +10,11 @@ const Header = () => {
     <header className="header">
       <div className="header-content">
         <div className="header-left">
-          <span className="logo">🚗</span>
+          <img 
+            src={logo} 
+            alt="Car Finder Logo"
+            className="logo"
+          />
           <div className="title-container">
             <h1 className="header-title">Car Finder</h1>
             <p className="header-subtitle">Find your perfect car match</p>

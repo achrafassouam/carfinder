@@ -5,18 +5,23 @@ const RecommendationsTable = ({ recommendations }) => {
     return null;
   }
 
-  const BASE_URL = 'http://localhost:5001';
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5001';
+  console.log('Backend URL:', BASE_URL); // This will help us verify the URL in the console
 
-  // Define your mapping of car types to image URLs
+  if (!BASE_URL) {
+    console.error('Backend URL is not set. Please check your .env file.');
+    return <div>Error: Backend URL is not set</div>;
+  }
+
   const carTypeImages = {
-    sedan: `${BASE_URL}/public/images/generic/sedan.jpg`,
-    suv: `${BASE_URL}/public/images/generic/suv.jpg`,
-    convertible: `${BASE_URL}/public/images/generic/convertible.jpg`,
-    coupe: `${BASE_URL}/public/images/generic/coupe.jpg`,
-    hatchback: `${BASE_URL}/public/images/generic/hatchback.jpg`,
-    van: `${BASE_URL}/public/images/generic/van.jpg`,
-    default: `${BASE_URL}/public/images/generic/default.jpg`,
-    truck: `${BASE_URL}/public/images/generic/truck.jpg`,
+    sedan: `${BASE_URL}/images/generic/sedan.jpg`,
+    suv: `${BASE_URL}/images/generic/suv.jpg`,
+    convertible: `${BASE_URL}/images/generic/convertible.jpg`,
+    coupe: `${BASE_URL}/images/generic/coupe.jpg`,
+    hatchback: `${BASE_URL}/images/generic/hatchback.jpg`,
+    van: `${BASE_URL}/images/generic/van.jpg`,
+    truck: `${BASE_URL}/images/generic/truck.jpg`,
+    default: `${BASE_URL}/images/generic/default.jpg`,
   };
 
   return (
@@ -24,15 +29,19 @@ const RecommendationsTable = ({ recommendations }) => {
       <h2>Recommendations:</h2>
       <div className="car-grid">
         {recommendations.map((car, index) => {
+          const bodyType = (car.bodyType || '').toLowerCase();
+          const imageUrl = carTypeImages[bodyType] || carTypeImages.default;
+          console.log(`Car ${index + 1} - Body Type: ${bodyType}, Image URL: ${imageUrl}`);
+
           return (
             <div key={index} className="car-card">
-              <img 
-                src={carTypeImages[car.bodyType]} 
-                alt={`${car.brand} ${car.model}`} 
+              <img
+                src={imageUrl}
+                alt={`${car.brand} ${car.model}`}
                 className="car-image"
                 onError={(e) => {
                   console.error(`Error loading image for ${car.brand} ${car.model}:`, e);
-                  e.target.src = `${BASE_URL}/public/images/generic/default.jpg`; // Fallback image
+                  e.target.src = carTypeImages.default; // Fallback image
                 }}
               />
               <h3>{car.brand} {car.model}</h3>
