@@ -1,0 +1,57 @@
+.about-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.about-page h1 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+}
+
+.about-page h2 {
+  color: #2980b9;
+  margin-top: 30px;
+}
+
+.about-page p {
+  margin-bottom: 15px;
+}
+
+.about-page pre {
+  background-color: #282c34;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  overflow: auto;
+}
+
+.about-page code {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  display: block;
+  padding: 15px;
+  color: #abb2bf;
+  font-weight: bold;
+}
+
+/* Syntax highlighting */
+.about-page .keyword { color: #c678dd; }
+.about-page .function { color: #61afef; }
+.about-page .string { color: #98c379; }
+.about-page .number { color: #d19a66; }
+.about-page .comment { color: #5c6370; font-style: italic; font-weight: normal; }
+.about-page .bracket { color: #e06c75; }
+
+.about-page section {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
